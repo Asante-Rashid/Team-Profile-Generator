@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Asante-Rashid/Team-Profile-Generator/issues"
   },
-  "homepage": "https://github.com/Asante-Rashid/Team-Profile-Generator#readme"
+  "homepage": "https://github.com/Asante-Rashid/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
 }
