@@ -29,24 +29,23 @@ function init() {
             default: 'NA',
 
         },
-        {
-            type: "input",
-            name: "office",
-            message: "What is your email?",
-            default: 'NA',
-
-        },
-        {
+              {
             type: "checkbox",
-            message: "End of manager profile. What would yoiu like to do?",
+            message: "End of profile. What would yoiu like to do?",
             name: "Choice",
             choices: [
-                "add an engineer",
+                "add engineer",
                 "add intern",
                 "end team builder",
             ],
 
         },
+        {
+            type: 'input',
+            name: 'url',
+            message: 'Enter the URL',
+            when: (answers) => answers.Choice === "add engineer"
+         },
     ])
 };
 
