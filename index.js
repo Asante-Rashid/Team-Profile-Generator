@@ -1,4 +1,8 @@
 var inquirer = require('inquirer');
+const Employee = require("./library/employee");
+const Manager = require("./library/manager");
+const Engineer = require("./library/engineer");
+const Intern = require("./library/intern");
 const fs = require('fs');
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -10,36 +14,36 @@ function init() {
     return inquirer.prompt([
         {
             type: "input",
-            name: "Name-M",
+            name: "name",
             message: "What is your name?",
             default: 'Asante',
 
         },
         {
             type: "input",
-            name: "id-M",
+            name: "id",
             message: "What is your employee ID number",
-            default: '00000',
+            default: '00001',
 
         },
         {
             type: "input",
-            name: "email-M",
+            name: "email",
             message: "What is your email?",
-            default: 'NA',
+            default: 'test@gmail.com',
 
         },
         {
             type: "input",
-            name: "office-M",
+            name: "office",
             message: "What is your office number?",
-            default: 'NA',
+            default: '123',
 
         },
               {
             type: "checkbox",
             message: "End of profile. What would yoiu like to do?",
-            name: "Choice",
+            name: "choice",
             choices: [
                 "add engineer",
                 "add intern",
@@ -47,8 +51,10 @@ function init() {
             ],
 
         }
-    ]).then(finalAction => {
-        switch (finalAction.choices){
+    ]).then(val => {
+        const manager = new Manager(val.id, val.office, val.name, val.email);
+        console.log(manager)
+        switch (val.choice){
             case "add engineer": addEnginer();
             case "add intern": addIntern();
             case "end team builder": completeTeam();
@@ -97,8 +103,8 @@ function addEnginer() {
             ],
 
         }
-    ]).then(finalAction => {
-        switch (finalAction.choices){
+    ]).then(val => {
+        switch (val.choices){
             case "add engineer": addEnginer();
             case "add intern": addIntern();
             case "end team builder": completeTeam();
@@ -147,8 +153,8 @@ function addIntern() {
             ],
 
         }
-    ]).then(finalAction => {
-        switch (finalAction.choices){
+    ]).then(val => {
+        switch (val.choices){
             case "add engineer": addEnginer();
             case "add intern": addIntern();
             case "end team builder": completeTeam();
@@ -156,6 +162,8 @@ function addIntern() {
     })
 };
 
-function completeTeam();
+function completeTeam(){
+    console.log("--Team creation complete. Exiting program--")
+};
 
 init();
